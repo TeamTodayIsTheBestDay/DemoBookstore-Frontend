@@ -16,7 +16,7 @@ onMounted(() => {
 
 <template>
   <a-card>
-    <h1 class="text-2xl font-bold">欢迎来到小书店</h1>
+    <h1 class="text-2xl font-bold">欢迎来到小书店!</h1>
     <a-divider />
     <a-space wrap>
       <BookComponent v-for="book in books" :book="book" :key="book.id" />
