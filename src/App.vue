@@ -26,6 +26,6 @@
     #12fff7,
     #b3ffab
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  height: 100vh;
+  /*height: 100vh;删了颜色铺满整个页面*/
 }
 </style>
