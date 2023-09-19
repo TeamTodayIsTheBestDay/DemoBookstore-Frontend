@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Book } from "../model/quicktype/Book.ts"
+import Preview from "./Preview.vue";
 
 interface Props {
   book: Book
@@ -17,6 +18,7 @@ const props = defineProps<Props>()
         <p class="text-gray-400">{{ book.author }} 著</p>
         <p class="text-gray-400">{{ book.publishYear }}年</p>
         <p class="text-gray-400">{{ book.press }}</p>
+        <Preview :book="book" />
       </div>
     </div>
   </a-card>
