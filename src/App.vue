@@ -1,10 +1,50 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { h, ref } from "vue"
+import { MenuProps } from "ant-design-vue"
+import { useRouter } from "vue-router"
+const current = ref<string[]>(["BookShow"])
+const router = useRouter()
+const items = ref<MenuProps["items"]>([
+  {
+    key: "BookShow",
+    label: "图书展示",
+    title: "图书展示",
+    onClick: () => router.push("/"),
+  },
+  {
+    key: "BookManagement",
+    label: "图书管理",
+    title: "图书管理",
+    onClick: () => router.push("/add"),
+    children: [
+      {
+        key: "AddBooks",
+        label: "增加书籍",
+        title: "增加书籍",
+        onClick: () => router.push("/add"),
+      },
+      {
+        key: "ModifyBook",
+        label: "修改书籍信息",
+        title: "修改书籍信息",
+        onClick: () => router.push("/modify"),
+      },
+      {
+        key: "DeleteBook",
+        label: "删除书籍",
+        title: "删除书籍",
+        onClick: () => router.push("/delete"),
+      },
+    ],
+  },
+])
+</script>
 
 <template>
   <div class="content-container">
     <div class="bg-white border-b-gray-300 border-b-2" style="height: 60px">
       <div class="flex h-full items-center">
-        <span class="mx-5 font-bold">Demo小书店</span>
+        <a-menu mode="horizontal" v-model:selectedKeys="current" :items="items"> </a-menu>
       </div>
     </div>
     <div class="flex">

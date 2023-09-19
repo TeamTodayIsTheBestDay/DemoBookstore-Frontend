@@ -7,15 +7,27 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AButton: typeof import('ant-design-vue/es')['Button']
     ACard: typeof import('ant-design-vue/es')['Card']
+    AddBook: typeof import('./src/components/BookManagement/AddBook.vue')['default']
     ADivider: typeof import('ant-design-vue/es')['Divider']
+    AForm: typeof import('ant-design-vue/es')['Form']
+    AFormItem: typeof import('ant-design-vue/es')['FormItem']
     AImage: typeof import('ant-design-vue/es')['Image']
+    AInput: typeof import('ant-design-vue/es')['Input']
+    AInputNumber: typeof import('ant-design-vue/es')['InputNumber']
     ALayoutHeader: typeof import('ant-design-vue/es')['LayoutHeader']
     AMenu: typeof import('ant-design-vue/es')['Menu']
     AMenuItem: typeof import('ant-design-vue/es')['MenuItem']
+    AModal: typeof import('ant-design-vue/es')['Modal']
     ASpace: typeof import('ant-design-vue/es')['Space']
+    ATextarea: typeof import('ant-design-vue/es')['Textarea']
     BookComponent: typeof import('./src/components/BookComponent.vue')['default']
+    BookDetails: typeof import('./src/components/BookDetails.vue')['default']
+    BookManagement: typeof import('./src/components/BookManagement.vue')['default']
+    DeleteBook: typeof import('./src/components/BookManagement/DeleteBook.vue')['default']
     Home: typeof import('./src/components/Home.vue')['default']
+    ModifyBook: typeof import('./src/components/BookManagement/ModifyBook.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
