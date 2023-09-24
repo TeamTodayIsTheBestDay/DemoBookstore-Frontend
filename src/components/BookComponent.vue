@@ -17,7 +17,7 @@ const props = defineProps<Props>()
 </script>
 
 <template>
-  <a-card @click="showModal">
+  <a-card @click="showModal" class="cursor-pointer book-container">
     <div class="flex">
       <a-image :src="book.photo" :preview="false" style="height: 250px; width: 150px" class="object-contain" />
       <div class="mx-5">
@@ -44,4 +44,14 @@ const props = defineProps<Props>()
   </a-card>
 </template>
 
-<style scoped></style>
+<style scoped>
+.book-container{
+    transition-duration: 300ms;
+}
+
+.book-container:hover{
+    scale: 1.05;
+    transition-duration: 300ms;
+}
+
+</style>

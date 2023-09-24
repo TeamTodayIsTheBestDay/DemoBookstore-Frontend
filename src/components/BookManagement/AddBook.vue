@@ -39,7 +39,7 @@ const closeModal = () => {
 
 <template>
   <div>
-    <a-modal title="增加书籍" v-model:open="open" @cancel="closeModal" :width="800" @ok="closeModal">
+    <a-card title="增加书籍" v-model:open="open" @cancel="closeModal" :width="800" @ok="closeModal">
       <a-form @submit="submitForm">
         <a-form-item label="书名">
           <a-input v-model:value="book.name" placeholder="请输入书名" />
@@ -66,7 +66,7 @@ const closeModal = () => {
           <a-button type="primary" html-type="submit">提交</a-button>
         </a-form-item>
       </a-form>
-    </a-modal>
+    </a-card>
   </div>
 </template>
 
