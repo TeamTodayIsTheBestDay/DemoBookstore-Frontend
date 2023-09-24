@@ -22,7 +22,7 @@ const onSearch = async (searchValue: number) => {
   console.log("use value", searchValue)
 
   try {
-    const response = await axios.get(`https://book.cinea.cc/book/${searchValue}`)
+    const response = await axios.get(`http://127.0.0.1:9001/book/get?id=${searchValue}`)
     book.value = response.data
     console.log(book.value)
   } catch (error) {
@@ -40,21 +40,27 @@ const onUpdate = () => {
   editModalVisible.value = true
 }
 
-const onDelete = async (id: number) => {
-  console.log("Delete button clicked")
-  try {
-    const response = await axios.delete(`https://book.cinea.cc/book?bookId=${id}`)
-    console.log(response.data)
-  } catch (error) {
-    console.error(error)
-  }
+const onDelete = (id: number) => {
+  Modal.confirm({
+    title: "确定要删除该书籍吗？",
+    content: "删除后无法复原",
+    onOk: async () => {
+      console.log("Delete button clicked")
+      try {
+        const response = await axios.delete(`http://127.0.0.1:9001/book/delete?id=${id}`)
+        console.log(response.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+  })
 }
 //填修改信息
 const onEditFinish = async (values: any) => {
   console.log("Edit Success:", values)
   try {
     console.log(values.newBook)
-    const response = await axios.post("https://book.cinea.cc/book", values.newBook)
+    const response = await axios.put("http://127.0.0.1:9001/book/update", values.newBook)
     // console.log(response.data)
     if (response.data == 1) {
       console.log(123)
@@ -74,6 +80,7 @@ const onEditFinish = async (values: any) => {
 
 //输入框
 import { reactive } from "vue"
+import { Modal } from "ant-design-vue"
 const layout = {
   labelCol: { span: 8 },
   wrapperCol: { span: 16 },
@@ -103,13 +110,19 @@ const formState = reactive({
 })
 const onFinish = async (values: any) => {
   console.log("Success:", values)
-  try {
-    console.log(values)
-    const response = await axios.put("https://book.cinea.cc/book", values.newBook)
-    console.log(response.data)
-  } catch (error) {
-    console.error(error)
-  }
+  Modal.confirm({
+    title: "确定要新增该书籍吗？",
+    onOk: async () => {
+      console.log("Delete button clicked")
+      try {
+        console.log(values)
+        const response = await axios.post("http://127.0.0.1:9001/book/add", values.newBook)
+        console.log(response.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+  })
 }
 </script>
 

@@ -7,7 +7,7 @@ import BookComponentWsy from "./BookComponentWsy.vue"
 const books = ref<Book[]>([])
 
 onMounted(() => {
-  axios.get("https://book.cinea.cc/book").then((res) => {
+  axios.get("http://127.0.0.1:9001/book/all").then((res) => {
     books.value = res.data
     console.log(books.value)
   })
