@@ -11,6 +11,7 @@ const book = ref<Book>({
   publishYear: new Date().getFullYear(),
   isbn: "",
   intro: "",
+
 })
 const submitForm = async () => {
   try {
