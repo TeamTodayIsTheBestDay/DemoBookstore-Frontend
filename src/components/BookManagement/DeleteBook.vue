@@ -11,7 +11,8 @@ const submitForm = async () => {
   }
 
   try {
-    const response = await axios.delete(`https://book.cinea.cc/book?bookId=${bookId.value}`)
+    //const response = await axios.delete(`/book/delete?bookId=${bookId.value}`)
+    const response = await axios.delete(`/book/delete?bookId=${bookId.value}`)
 
     if (response.status !== 200) {
       throw new Error("Network response was not ok")

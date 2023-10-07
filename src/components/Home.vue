@@ -7,7 +7,7 @@ import BookComponent from "./BookComponent.vue"
 const books = ref<Book[]>([])
 
 onMounted(() => {
-  axios.get("/book").then((res) => {
+  axios.get("/book/all").then((res) => {
     books.value = res.data
     console.log(books.value)
   })

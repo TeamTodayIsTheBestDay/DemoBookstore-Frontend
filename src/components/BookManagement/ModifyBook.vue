@@ -14,7 +14,7 @@ const book = ref<Book>({
 })
 const submitForm = async () => {
   try {
-    const response = await axios.post("https://book.cinea.cc/book", book.value)
+    const response = await axios.put("/book/modify", book.value)
 
     if (response.status !== 200) {
       throw new Error("Network response was not ok")
@@ -36,7 +36,7 @@ const closeModal = () => {
 
 <template>
   <div>
-    <a-form @submit="submitForm">
+    <a-form @submit.prevent="submitForm">
       <a-modal title="修改书籍信息" v-model:open="open" @cancel="closeModal" :width="800" @ok="closeModal">
         <a-form-item label="id">
           <a-input v-model:value="book.id" placeholder="请输入要修改的书的id" />
@@ -63,7 +63,7 @@ const closeModal = () => {
           <a-input v-model:value="book.photo" placeholder="请输入图片链接" />
         </a-form-item>
         <a-form-item>
-          <a-button type="primary" html-type="submit">提交</a-button>
+          <a-button type="primary" @click="submitForm">提交</a-button>
         </a-form-item>
       </a-modal>
     </a-form>

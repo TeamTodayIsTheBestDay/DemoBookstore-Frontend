@@ -16,7 +16,7 @@ const book = ref<Book>({
 const submitForm = async (event: Event) => {
   event.preventDefault() // 防止页面刷新
   try {
-    const response = await axios.put("/book", book.value)
+    const response = await axios.post("/book/add", book.value)
 
     if (response.status !== 200) {
       throw new Error("Network response was not ok")
